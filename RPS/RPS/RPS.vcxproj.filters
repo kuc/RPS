@@ -18,12 +18,15 @@
     <ClCompile Include="..\..\RPS.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RPStesting.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\player.h">
+    <ClInclude Include="..\..\Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\throw.h">
+    <ClInclude Include="..\..\Throw.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

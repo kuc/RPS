@@ -140,10 +140,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\RPS.cpp" />
+    <ClCompile Include="RPStesting.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\player.h" />
-    <ClInclude Include="..\..\throw.h" />
+    <ClInclude Include="..\..\Player.h" />
+    <ClInclude Include="..\..\Throw.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
