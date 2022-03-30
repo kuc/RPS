@@ -7,10 +7,10 @@ using namespace std;
 class Throw {
 public:
 	Throw();
-	//int Shoot();
+	int Shoot();
 
 private:
-	int options;
+	int options = 3;
 };
 
 #endif
