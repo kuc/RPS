@@ -8,19 +8,28 @@ using namespace std;
 class Player {
 
 public:
-	//constructor
+	//(de)constructor(s)
 	Player();
+	Player(string n);
 	~Player();
 
-	//void Display(ostream & out) const;
-	//Score();
-	//Name();
-	//TakeTurn();
+	// Accessors
+	ostream& Display(ostream & out, Player r) const;
+	int Score() const;
+	string Name() const;
+	void TakeTurn();
+	string Match(Player& p1, Player& p2);
+
+	// Assignment Operator
+	//const Player& operator =(const Player& right);
+
 private:
 	string name;
-	int score;
-	int * throws = new int[3];
+	int score = 0;
+	int * throws = nullptr;
 };
 
+//bool operator < (const Player& left, const Player& right);
+ostream& operator << (ostream& out, const Player& player);
 
 #endif
