@@ -1,0 +1,3 @@
+﻿  RPStesting.cpp
+C:\Users\respe\Desktop\GitHub\RPS\RPStesting.cpp(16,16): warning C4244: 'initializing': conversion from 'time_t' to 'unsigned int', possible loss of data
+  RPS.vcxproj -> C:\Users\respe\Desktop\GitHub\RPS\RPS\x64\Debug\RPS.exe
