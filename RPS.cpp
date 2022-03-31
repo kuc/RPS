@@ -31,23 +31,28 @@ Player::Player(string n) {
 
 Player::~Player() {
 	if (throws)
-		delete throws;
+		delete[] throws;
 }
 
-ostream& Player::Display(ostream& out, Player r) const {
-	for (int i = 0; i < 3; i++) {
-		if (r.throws[i] == 0) {
-			out << "Round " << i << ":" << " Paper" << endl;
-		}
-		if (r.throws[i] == 1) {								
-			out << "Round " << i << ":" << " Scissors" << endl;
-		}	
-		if (r.throws[i] == 2) {
-			out << "Round " << i << ":" << " Rock" << endl;
+//ostream& Player::Display(ostream& out) const {
+void Player::Display(ostream& out) const {
+	out << "Players Name is: " << name << endl;
+	if (throws != nullptr) {
+		for (int i = 0; i < 3; i++) {
+			if (throws[i] == 0) {
+				out << "Round " << i << ":" << " Paper" << endl;
+			}
+			if (throws[i] == 1) {
+				out << "Round " << i << ":" << " Scissors" << endl;
+			}
+			if (throws[i] == 2) {
+				out << "Round " << i << ":" << " Rock" << endl;
+			}
 		}
 	}
+	else
+		out << "Player " << name << " has played no games yet." << endl;
 	out << "There score is: " << score << endl;
-	return out;
 // Display rock,paper,scissors
 // display score
 
@@ -98,17 +103,39 @@ string Player::Match(Player &p1, Player &p2)
 
 	if (p1s < p2s) {
 		p2.score++;
-		return p2.name;
+		cout << p2;
+		return "p2";
 	}
-	else
+	else {
 		p1.score++;
-		return p1.name;
+		cout << p1;
+		return "p1";
+	}
+}
+
+const Player& Player::operator =(const Player& right)
+{
+	if (this != &right) {
+		name = right.name;
+		score = right.score;
+		if (throws != nullptr) {
+			for (int i = 0; i < 3; i++) {
+				throws[i] = right.throws[i];
+			}
+		}
+	}
+	return * this;
 }
 
 
+bool operator<(const Player& left, const Player& right)
+{
+	return (left.Score() < right.Score());
+}
+
 ostream& operator<<(ostream& out, const Player& player)
 {
-	player.Display(out, player);
+	player.Display(out);
 	return out;
 }
 
