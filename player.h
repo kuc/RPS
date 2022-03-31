@@ -14,14 +14,15 @@ public:
 	~Player();
 
 	// Accessors
-	ostream& Display(ostream & out, Player r) const;
+	//ostream& Display(ostream & out) const;
+	void Display(ostream& out) const;
 	int Score() const;
 	string Name() const;
 	void TakeTurn();
 	string Match(Player& p1, Player& p2);
 
 	// Assignment Operator
-	//const Player& operator =(const Player& right);
+	const Player& operator =(const Player& right);
 
 private:
 	string name;
@@ -29,7 +30,7 @@ private:
 	int * throws = nullptr;
 };
 
-//bool operator < (const Player& left, const Player& right);
+bool operator < (const Player& left, const Player& right);
 ostream& operator << (ostream& out, const Player& player);
 
 #endif
