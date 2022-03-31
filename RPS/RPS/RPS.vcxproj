@@ -139,7 +139,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Player.cpp" />
     <ClCompile Include="..\..\RPS.cpp" />
     <ClCompile Include="..\..\RPStesting.cpp" />
   </ItemGroup>
