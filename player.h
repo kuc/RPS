@@ -19,7 +19,7 @@ public:
 	int Score() const;
 	string Name() const;
 	void TakeTurn();
-	string Match(Player& p1, Player& p2);
+	string Match(Player& p2);
 
 	// Assignment Operator
 	const Player& operator =(const Player& right);
@@ -27,7 +27,7 @@ public:
 private:
 	string name;
 	int score = 0;
-	int * throws = nullptr;
+	int * throws = new int[3];
 };
 
 bool operator < (const Player& left, const Player& right);
