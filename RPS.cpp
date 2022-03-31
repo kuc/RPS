@@ -75,41 +75,45 @@ void Player::TakeTurn()
 	}
 }
 
-string Player::Match(Player &p1, Player &p2)
+string Player::Match(Player &p2)
 {
 	int p1s = 0;
 	int p2s = 0;
 
 	for (int i = 0; i < 3; i++) {
-		if (p1.throws[i] == 1 && p2.throws[i] == 2) {
+		if (throws[i] == 1 && p2.throws[i] == 2) {
 			p2s++;
 		}
-		if (p1.throws[i] == 2 && p2.throws[i] == 1) {
+		if (throws[i] == 2 && p2.throws[i] == 1) {
 			p1s++;
 		}
-		if (p1.throws[i] == 0 && p2.throws[i] == 2) {
+		if (throws[i] == 0 && p2.throws[i] == 2) {
 			p1s++;
 		}
-		if (p1.throws[i] == 2 && p2.throws[i] == 0) {
+		if (throws[i] == 2 && p2.throws[i] == 0) {
 			p2s++;
 		}
-		if (p1.throws[i] == 1 && p2.throws[i] == 0) {
+		if (throws[i] == 1 && p2.throws[i] == 0) {
 			p1s++;
 		}
-		if (p1.throws[i] == 0 && p2.throws[i] == 1) {
+		if (throws[i] == 0 && p2.throws[i] == 1) {
 			p2s++;
 		}
+
 	}
 
 	if (p1s < p2s) {
 		p2.score++;
-		cout << p2;
+		//cout << p2;
 		return "p2";
 	}
-	else {
-		p1.score++;
-		cout << p1;
+	else if (p1s > p2s) {
+		score++;
+		//cout << this;
 		return "p1";
+	}
+	else if (p1s == p2s) {
+		return "tie";
 	}
 }
 
