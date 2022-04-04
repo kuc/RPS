@@ -20,7 +20,7 @@ The acronym RPS stands for Rock, Paper, Scissors. The goal of this program is to
 ## Demo
 
 ![ex1](https://s7.gifyu.com/images/ezgif.com-gif-maker6bacd3e2a24bef33.gif)
-![ex2](https://s7.gifyu.com/images/ezgif.com-gif-maker-1101368560224003d.gif)
+![ex2](https://s7.gifyu.com/images/ezgif.com-gif-maker-14eecee4324b16077.gif)
 
 
 ## License
