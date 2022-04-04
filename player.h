@@ -14,7 +14,6 @@ public:
 	~Player();
 
 	// Accessors
-	//ostream& Display(ostream & out) const;
 	void Display(ostream& out) const;
 	int Score() const;
 	string Name() const;
