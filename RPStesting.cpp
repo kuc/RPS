@@ -116,8 +116,10 @@ void Play(Player*& active, Player*& inactive, int& PlayersRemain, int& PlayersIn
 		cout << active[player2] << endl;
 		PlayersInactive++;
 
+
+		// HAVE TO CREATE TEMP ARRAY
 		if (PlayersRemain > 1) {
-			inactive[PlayersInactive - 1] = active[player2];
+			inactive[PlayersInactive - 1] = active[player2]; // have to change this
 		}
 
 		if (player2 < 0 || player2 >= PlayersRemain) {
@@ -137,8 +139,9 @@ void Play(Player*& active, Player*& inactive, int& PlayersRemain, int& PlayersIn
 		cout << active[player2] << endl;
 		PlayersInactive++;
 
+		// HAVE TO CREATE TEMP ARRAY
 		if (PlayersRemain > 1) {
-			inactive[PlayersInactive - 1] = active[player1];
+			inactive[PlayersInactive - 1] = active[player1]; // have to change this
 		}
 
 		if (player1 < 0 || player1 >= PlayersRemain) {
