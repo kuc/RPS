@@ -23,6 +23,7 @@ int getPlayer();
 void AssignPlayer(int players, Player*& active);
 void Play(Player*& active, Player*& inactive, int& PlayersRemain, int& PlayersInactive, int& round);
 void ScoreMe(Player* active, Player* inactive, int PlayersInactive);
+void updateArray(Player*& active, Player*& inactive, int PlayersRemain, int PlayersInactive, int pos);
 
 int main() {
 
@@ -62,7 +63,7 @@ int main() {
 int getPlayer() {
 	int temp;
 	bool valid = false;
-	// make sure integer is inputted
+	// make sure an integer is inputted
 	while (!valid) {
 		cout << "How many players do you want?: ";
 		cin >> temp;
@@ -115,45 +116,18 @@ void Play(Player*& active, Player*& inactive, int& PlayersRemain, int& PlayersIn
 		cout << active[player1] << endl;
 		cout << active[player2] << endl;
 		PlayersInactive++;
-
-
-		// HAVE TO CREATE TEMP ARRAY
-		if (PlayersRemain > 1) {
-			inactive[PlayersInactive - 1] = active[player2]; // have to change this
-		}
-
-		if (player2 < 0 || player2 >= PlayersRemain) {
-			cerr << "Illegal Pos - Cannot erase" << endl;
-			return;
-		}
-		for (int i = player2; i < PlayersRemain - 1; i++) {
-			active[i] = active[i + 1];
-		}
-
 		PlayersRemain--;
 		// move p2 to inactive
+		updateArray(active, inactive, PlayersRemain, PlayersInactive, player2);
 	}
 	if (match == "p2") {
 		cout << "Player " << active[player2].Name() << " Wins!" << endl << endl;
 		cout << active[player1] << endl;
 		cout << active[player2] << endl;
 		PlayersInactive++;
-
-		// HAVE TO CREATE TEMP ARRAY
-		if (PlayersRemain > 1) {
-			inactive[PlayersInactive - 1] = active[player1]; // have to change this
-		}
-
-		if (player1 < 0 || player1 >= PlayersRemain) {
-			cerr << "Illegal Pos - Cannot erase" << endl;
-			return;
-		}
-		for (int i = player1; i < PlayersRemain - 1; i++) {
-			active[i] = active[i + 1];
-		}
-
 		PlayersRemain--;
 		// move p1 to inactive
+		updateArray(active, inactive, PlayersRemain, PlayersInactive, player1);
 	}
 	if (match == "tie") {
 		cout << "Player " << active[player1].Name() << " and " << active[player2].Name() << " tied!" << endl << endl;
@@ -177,4 +151,38 @@ void ScoreMe(Player* active, Player* inactive, int PlayersInactive) {
 	}
 
 	cout << "The winner with a score of " << maxscore << " is " << maxname << endl;
+}
+
+void updateArray(Player*& active, Player*& inactive, int PlayersRemain, int PlayersInactive, int pos) {
+
+	if (PlayersInactive == 1) {
+		inactive = new Player[1];
+		if (!inactive)
+			return;
+		inactive[0] = active[pos];
+	}
+	else {
+		Player* changein = new Player[PlayersInactive];
+		for (int i = 0; i < PlayersInactive - 1; i++) {
+			changein[i] = inactive[i];
+		}
+		changein[PlayersInactive - 1] = active[pos];
+		delete[]inactive;
+		inactive = changein;
+	}
+
+	Player* changeac = new Player[PlayersRemain];
+	if (!changeac) {
+		cerr << "Memory not allocated!" << endl;
+		return;
+	}
+	for (int i = 0; i < pos; i++) {
+		changeac[i] = active[i];
+	}
+	for (int i = pos; i < PlayersRemain; i++) {
+		changeac[i] = active[i+1];
+	}
+	delete[]active;
+	active = changeac;
+	return;
 }
