@@ -112,9 +112,9 @@ string Player::Name() const
 //***********************************************************
 void Player::TakeTurn()
 {
-	Throw *t = new Throw;
+	Throw t = Throw();
 	for (int i = 0; i < 3; i++) {
-		throws[i] = t->Shoot();
+		throws[i] = t.Shoot();
 	}
 }
 
@@ -156,12 +156,10 @@ string Player::Match(Player &p2)
 
 	if (p1s < p2s) {
 		p2.score++;
-		//cout << p2;
 		return "p2";
 	}
 	else if (p1s > p2s) {
 		score++;
-		//cout << this;
 		return "p1";
 	}
 	else if (p1s == p2s) {
